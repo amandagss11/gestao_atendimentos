@@ -1,7 +1,5 @@
-// src/controllers/profileController.js
 import Profile from '../models/profile.js';
 
-// 1. CRIAR Perfil (POST /api/profiles)
 export const createProfile = async (req, res) => {
     try {
         const { name, permissions } = req.body;
@@ -22,7 +20,6 @@ export const createProfile = async (req, res) => {
     }
 };
 
-// 2. LISTAR Perfis (GET /api/profiles)
 export const listProfiles = async (req, res) => {
     try {
         const profiles = await Profile.findAll();
@@ -33,7 +30,6 @@ export const listProfiles = async (req, res) => {
     }
 };
 
-// 3. OBTER Perfil por ID (GET /api/profiles/:id)
 export const getProfileById = async (req, res) => {
     try {
         const profile = await Profile.findByPk(req.params.id);
@@ -48,7 +44,6 @@ export const getProfileById = async (req, res) => {
     }
 };
 
-// 4. ATUALIZAR Perfil (PUT /api/profiles/:id)
 export const updateProfile = async (req, res) => {
     try {
         const [updatedRows] = await Profile.update(req.body, {
@@ -68,7 +63,6 @@ export const updateProfile = async (req, res) => {
     }
 };
 
-// 5. DELETAR Perfil (DELETE /api/profiles/:id)
 export const deleteProfile = async (req, res) => {
     try {
         const deletedRows = await Profile.destroy({

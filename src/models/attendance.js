@@ -1,10 +1,9 @@
-// src/models/Attendance.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import User from './user.js'; // Usuário que registrou o atendimento
-import AttendanceForm from './attendanceForm.js'; // Forma do atendimento
-import PublicType from './publicType.js'; // Público atendido
-import AttendanceType from './attendanceType.js'; // Tipo de Atendimento
+import User from './user.js'; 
+import AttendanceForm from './attendanceForm.js'; 
+import PublicType from './publicType.js'; 
+import AttendanceType from './attendanceType.js'; 
 
 const Attendance = sequelize.define('Attendance', {
     id_attendance: {
@@ -13,8 +12,7 @@ const Attendance = sequelize.define('Attendance', {
         autoIncrement: true,
         field: 'id_attendance'
     },
-    // --- CHAVES ESTRANGEIRAS (FKs) ---
-    user_id: { // Usuário que fez o registro
+    user_id: { 
         type: DataTypes.INTEGER,
         allowNull: false,
         references: { model: User, key: 'id_user' }
@@ -35,17 +33,15 @@ const Attendance = sequelize.define('Attendance', {
         references: { model: AttendanceType, key: 'id_attendance_type' }
     },
     
-    // --- DADOS DO ATENDIMENTO ---
-    // Campo para armazenar as respostas dos campos dinâmicos (Ex: CNPJ, Nome do Empregador)
     dynamic_data: {
-        type: DataTypes.JSON, // Tipo JSON para flexibilidade no armazenamento
+        type: DataTypes.JSON, 
         allowNull: true
     },
-    summary: { // Resumo do atendimento
+    summary: { 
         type: DataTypes.TEXT,
         allowNull: false
     },
-    is_resolved: { // Status do atendimento
+    is_resolved: { 
         type: DataTypes.BOOLEAN,
         defaultValue: false
     }

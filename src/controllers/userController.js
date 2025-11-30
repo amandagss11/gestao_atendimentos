@@ -1,8 +1,6 @@
-// src/controllers/userController.js
 import User from '../models/user.js';
 import Profile from '../models/profile.js';
 
-// 1. CRIAR Usuário (POST /api/users)
 export const createUser = async (req, res) => {
     try {
         const { name, email, password, profile_id } = req.body;
@@ -13,7 +11,6 @@ export const createUser = async (req, res) => {
         
         const newUser = await User.create({ name, email, password, profile_id });
         
-        // Não retornar a senha na resposta
         const userResponse = newUser.toJSON();
         delete userResponse.password;
 
@@ -28,13 +25,12 @@ export const createUser = async (req, res) => {
     }
 };
 
-// 2. LISTAR Usuários (GET /api/users)
 export const listUsers = async (req, res) => {
     try {
         const users = await User.findAll({
             attributes: ['id_user', 'name', 'email', 'is_active', 'profile_id'], // Excluir a senha
             include: [{ 
-                model: Profile, // Inclui o Perfil
+                model: Profile, 
                 as: 'profile',
                 attributes: ['name'] 
             }]
@@ -46,9 +42,7 @@ export const listUsers = async (req, res) => {
     }
 };
 
-// (Implementar GET/:id, PUT, DELETE aqui, seguindo o padrão)
 
-// Exemplo da função GET BY ID
 export const getUserById = async (req, res) => {
     try {
         const user = await User.findByPk(req.params.id, {

@@ -1,4 +1,3 @@
-// src/routes/profileRoutes.js
 import { Router } from 'express';
 import { 
     createProfile, 
@@ -10,7 +9,6 @@ import {
 
 const router = Router();
 
-// Rotas CRUD para Perfis de Acesso
 router.route('/profiles')
     .get(listProfiles) 
     .post(createProfile); 

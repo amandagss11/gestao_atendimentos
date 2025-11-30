@@ -1,8 +1,6 @@
-// src/models/AttendanceType.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
-import PublicType from './publicType.js'; // Importa o modelo PublicType
-
+import PublicType from './publicType.js'; 
 const AttendanceType = sequelize.define('AttendanceType', {
     id_attendance_type: {
         type: DataTypes.INTEGER,
@@ -18,12 +16,11 @@ const AttendanceType = sequelize.define('AttendanceType', {
         type: DataTypes.TEXT,
         allowNull: true
     },
-    // --- CHAVE ESTRANGEIRA (FK) ---
     public_type_id: { 
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: PublicType, // Referencia a tabela 'public_types'
+            model: PublicType, 
             key: 'id_public',
         }
     }

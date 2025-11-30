@@ -7,21 +7,20 @@ const Profile = sequelize.define('Profile', {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        field: 'id_profile' // Nome da coluna no banco de dados
+        field: 'id_profile' 
     },
     name: {
         type: DataTypes.STRING(50),
         allowNull: false,
         unique: true
     },
-    // Campo para definir permissões (ex: READ_ATTENDANCE, CRUD_USERS)
     permissions: { 
         type: DataTypes.TEXT,
         allowNull: true,
         defaultValue: 'READ_ATTENDANCE' 
     }
 }, {
-    tableName: 'profiles', // Nome da tabela no banco de dados
+    tableName: 'profiles', 
     timestamps: true 
 });
 

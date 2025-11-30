@@ -1,4 +1,3 @@
-// src/models/PublicType.js
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
@@ -14,7 +13,6 @@ const PublicType = sequelize.define('PublicType', {
         allowNull: false,
         unique: true
     },
-    // Breve descrição do público, se necessário
     description: {
         type: DataTypes.TEXT,
         allowNull: true

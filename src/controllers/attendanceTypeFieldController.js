@@ -1,8 +1,6 @@
-// src/controllers/attendanceTypeFieldController.js
 import AttendanceTypeField from '../models/attendanceTypeField.js';
 import AttendanceType from '../models/attendanceType.js';
 
-// 1. CRIAR Campo (POST /api/type-fields)
 export const createAttendanceTypeField = async (req, res) => {
     try {
         const { label, field_name, field_type, is_required, attendance_type_id } = req.body;
@@ -23,10 +21,8 @@ export const createAttendanceTypeField = async (req, res) => {
     }
 };
 
-// 2. LISTAR Campos (GET /api/type-fields)
 export const listAttendanceTypeFields = async (req, res) => {
     try {
-        // Opcionalmente, filtre por attendance_type_id via req.query
         const whereCondition = {};
         if (req.query.attendance_type_id) {
             whereCondition.attendance_type_id = req.query.attendance_type_id;
@@ -34,7 +30,6 @@ export const listAttendanceTypeFields = async (req, res) => {
 
         const fields = await AttendanceTypeField.findAll({
             where: whereCondition,
-            // Pode incluir AttendanceType aqui se necessário
         });
         return res.status(200).json(fields);
     } catch (error) {
@@ -43,6 +38,3 @@ export const listAttendanceTypeFields = async (req, res) => {
     }
 };
 
-// 3. OBTER Campo por ID (GET /api/type-fields/:id) - Omitindo para brevidade
-// 4. ATUALIZAR Campo (PUT /api/type-fields/:id) - Omitindo para brevidade
-// 5. DELETAR Campo (DELETE /api/type-fields/:id) - Omitindo para brevidade

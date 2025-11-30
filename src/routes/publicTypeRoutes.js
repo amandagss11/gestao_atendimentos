@@ -1,4 +1,3 @@
-// src/routes/publicTypeRoutes.js
 import { Router } from 'express';
 import { 
     createPublicType, 
@@ -10,7 +9,6 @@ import {
 
 const router = Router();
 
-// Rotas CRUD para Tipos de Público
 router.route('/public-types')
     .get(listPublicTypes) 
     .post(createPublicType); 

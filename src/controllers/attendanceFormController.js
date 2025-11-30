@@ -1,7 +1,7 @@
-// src/controllers/attendanceFormController.js
+
 import AttendanceForm from '../models/attendanceForm.js';
 
-// 1. CRIAR Forma de Atendimento (POST /api/forms)
+
 export const createAttendanceForm = async (req, res) => {
     try {
         const { name } = req.body;
@@ -22,7 +22,7 @@ export const createAttendanceForm = async (req, res) => {
     }
 };
 
-// 2. LISTAR Formas de Atendimento (GET /api/forms)
+
 export const listAttendanceForms = async (req, res) => {
     try {
         const forms = await AttendanceForm.findAll();
@@ -33,7 +33,7 @@ export const listAttendanceForms = async (req, res) => {
     }
 };
 
-// 3. OBTER Forma por ID (GET /api/forms/:id)
+
 export const getAttendanceFormById = async (req, res) => {
     try {
         const form = await AttendanceForm.findByPk(req.params.id);
@@ -48,7 +48,7 @@ export const getAttendanceFormById = async (req, res) => {
     }
 };
 
-// 4. ATUALIZAR Forma (PUT /api/forms/:id)
+
 export const updateAttendanceForm = async (req, res) => {
     try {
         const [updatedRows] = await AttendanceForm.update(req.body, {
@@ -68,7 +68,7 @@ export const updateAttendanceForm = async (req, res) => {
     }
 };
 
-// 5. DELETAR Forma (DELETE /api/forms/:id)
+
 export const deleteAttendanceForm = async (req, res) => {
     try {
         const deletedRows = await AttendanceForm.destroy({

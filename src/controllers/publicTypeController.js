@@ -1,7 +1,5 @@
-// src/controllers/publicTypeController.js
 import PublicType from '../models/publicType.js';
 
-// 1. CRIAR Público (POST /api/public-types)
 export const createPublicType = async (req, res) => {
     try {
         const { name, description } = req.body;
@@ -22,7 +20,6 @@ export const createPublicType = async (req, res) => {
     }
 };
 
-// 2. LISTAR Públicos (GET /api/public-types)
 export const listPublicTypes = async (req, res) => {
     try {
         const publicTypes = await PublicType.findAll();
@@ -33,7 +30,6 @@ export const listPublicTypes = async (req, res) => {
     }
 };
 
-// 3. OBTER Público por ID (GET /api/public-types/:id)
 export const getPublicTypeById = async (req, res) => {
     try {
         const publicType = await PublicType.findByPk(req.params.id);
@@ -48,7 +44,6 @@ export const getPublicTypeById = async (req, res) => {
     }
 };
 
-// 4. ATUALIZAR Público (PUT /api/public-types/:id)
 export const updatePublicType = async (req, res) => {
     try {
         const [updatedRows] = await PublicType.update(req.body, {
@@ -68,7 +63,6 @@ export const updatePublicType = async (req, res) => {
     }
 };
 
-// 5. DELETAR Público (DELETE /api/public-types/:id)
 export const deletePublicType = async (req, res) => {
     try {
         const deletedRows = await PublicType.destroy({

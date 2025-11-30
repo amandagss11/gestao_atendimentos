@@ -1,4 +1,3 @@
-// src/routes/attendanceTypeRoutes.js
 import { Router } from 'express';
 import { 
     createAttendanceType, 
@@ -10,7 +9,6 @@ import {
 
 const router = Router();
 
-// Rotas CRUD para Tipos de Atendimento
 router.route('/attendance-types')
     .get(listAttendanceTypes) 
     .post(createAttendanceType); 

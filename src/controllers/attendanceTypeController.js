@@ -1,8 +1,7 @@
-// src/controllers/attendanceTypeController.js
 import AttendanceType from '../models/attendanceType.js';
 import PublicType from '../models/publicType.js';
 
-// 1. CRIAR Tipo de Atendimento (POST /api/attendance-types)
+
 export const createAttendanceType = async (req, res) => {
     try {
         const { name, description, public_type_id } = req.body;
@@ -16,7 +15,6 @@ export const createAttendanceType = async (req, res) => {
 
     } catch (error) {
         console.error('Erro ao criar tipo de atendimento:', error);
-        // Verifique se o erro é devido a uma FK inexistente (public_type_id)
         if (error.name === 'SequelizeForeignKeyConstraintError') {
              return res.status(400).json({ message: 'O ID do Público fornecido não existe.' });
         }
@@ -24,11 +22,10 @@ export const createAttendanceType = async (req, res) => {
     }
 };
 
-// 2. LISTAR Tipos de Atendimento (GET /api/attendance-types)
+
 export const listAttendanceTypes = async (req, res) => {
     try {
         const types = await AttendanceType.findAll({
-            // Inclui o nome do público ao qual este tipo pertence
             include: [{ 
                 model: PublicType,
                 as: 'publicType',
@@ -42,7 +39,7 @@ export const listAttendanceTypes = async (req, res) => {
     }
 };
 
-// 3. OBTER Tipo por ID (GET /api/attendance-types/:id)
+
 export const getAttendanceTypeById = async (req, res) => {
     try {
         const type = await AttendanceType.findByPk(req.params.id, {
@@ -63,7 +60,6 @@ export const getAttendanceTypeById = async (req, res) => {
     }
 };
 
-// 4. ATUALIZAR Tipo (PUT /api/attendance-types/:id) - Omitindo para brevidade, segue o padrão
 export const updateAttendanceType = async (req, res) => {
     try {
         const [updatedRows] = await AttendanceType.update(req.body, {
@@ -85,7 +81,6 @@ export const updateAttendanceType = async (req, res) => {
 };
 
 
-// 5. DELETAR Tipo (DELETE /api/attendance-types/:id) - Omitindo para brevidade, segue o padrão
 export const deleteAttendanceType = async (req, res) => {
     try {
         const deletedRows = await AttendanceType.destroy({
@@ -99,7 +94,6 @@ export const deleteAttendanceType = async (req, res) => {
         return res.status(204).send(); 
     } catch (error) {
         console.error('Erro ao deletar tipo de atendimento:', error);
-        // Pode ser útil adicionar uma verificação se há atendimentos (Attendance) referenciando este tipo.
         return res.status(500).json({ message: 'Erro interno do servidor.' });
     }
 };
