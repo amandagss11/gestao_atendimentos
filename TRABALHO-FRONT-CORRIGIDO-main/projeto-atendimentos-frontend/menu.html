@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FGTAS • Menu Principal</title>
+
+  <style>
+      /* ============================
+         GLOBAL
+      ============================= */
+      body {
+          margin: 0;
+          font-family: "Poppins", sans-serif;
+          background: #f0f3f7;
+          color: #2a2a2a;
+      }
+
+      img {
+          user-select: none;
+      }
+
+      .flag-rs {
+          position: fixed;
+          right: 15px;
+          bottom: 15px;
+          width: 85px;
+          opacity: 0.9;
+          animation: float 3s infinite ease-in-out;
+      }
+
+      @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+      }
+
+      /* ============================
+         HEADER
+      ============================= */
+      .topbar {
+          background: #0054a6;
+          padding: 18px 25px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #fff;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      }
+
+      .brand {
+          font-size: 22px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+
+      .user-area {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+      }
+
+      .btn {
+          background: transparent;
+          border: 1px solid rgba(255,255,255,0.7);
+          padding: 8px 15px;
+          border-radius: 8px;
+          color: white;
+          cursor: pointer;
+          transition: 0.3s;
+          font-size: 14px;
+      }
+
+      .btn:hover {
+          background: rgba(255,255,255,0.2);
+      }
+
+      /* ============================
+         CONTAINER
+      ============================= */
+      .container {
+          width: 95%;
+          max-width: 1100px;
+          margin: 40px auto;
+          background: #ffffff;
+          padding: 35px;
+          border-radius: 16px;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+          animation: fadeIn 0.4s ease;
+      }
+
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
+      .title {
+          margin-top: 0;
+          font-size: 30px;
+          color: #003f7f;
+      }
+
+      .desc {
+          font-size: 16px;
+          margin-bottom: 35px;
+          color: #555;
+      }
+
+      /* ============================
+         GRID DE BOTÕES
+      ============================= */
+      .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 25px;
+      }
+
+      .card-btn {
+          background: #ffffff;
+          padding: 35px 25px;
+          border-radius: 16px;
+          text-align: center;
+          font-size: 18px;
+          text-decoration: none;
+          color: #003f7f;
+          font-weight: 600;
+          border: 2px solid #e0e7ef;
+          display: block;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+          transition: 0.3s ease;
+      }
+
+      .card-btn:hover {
+          transform: translateY(-6px);
+          border-color: #0054a6;
+          box-shadow: 0 8px 20px rgba(0,84,166,0.25);
+          background: #f6faff;
+      }
+
+      .card-btn:active {
+          transform: scale(0.97);
+      }
+
+      /* RESPONSIVO */
+      @media (max-width: 600px) {
+          .container {
+              padding: 25px;
+          }
+
+          .title {
+              font-size: 24px;
+          }
+
+          .card-btn {
+              padding: 28px 20px;
+              font-size: 16px;
+          }
+      }
+  </style>
+
+</head>
+
+<body class="page-menu">
+
+  <!-- Bandeira RS -->
+  <img src="assets/img/bandeira-rs.png" class="flag-rs" alt="RS" onerror="this.style.display='none'">
+
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      🏛️ FGTAS — Painel
+    </div>
+
+    <div class="user-area">
+      <span id="userName"></span>
+      <button id="logoutBtn" class="btn">Sair 🚪</button>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container">
+
+    <h1 class="title">📌 Menu Principal</h1>
+    <p class="desc">Selecione abaixo a área que deseja acessar.</p>
+
+    <section class="grid">
+
+      <a href="formulario.html" class="card-btn">
+        📝 Registrar Atendimento
+      </a>
+
+      <a href="relatorios.html" class="card-btn">
+        📊 Relatórios
+      </a>
+
+      <a href="usuarios.html" class="card-btn">
+        👥 Gestão de Usuários
+      </a>
+
+      <a href="campos.html" class="card-btn">
+        ⚙️ Editar Campos
+      </a>
+    </section>
+
+  </main>
+
+  <script src="assets/js/menu.js"></script>
+</body>
+</html>

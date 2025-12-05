@@ -1,0 +1,35 @@
+/* login.css - estilos específicos da página de login */
+.page-login .login-card{
+  width:100%;
+  max-width:420px;
+  text-align:center;
+  padding:28px;
+  border: 1px solid rgba(11,97,164,0.06);
+}
+.login-card h1{
+  margin:6px 0 6px;
+  font-size:20px;
+  color:var(--fg-blue-dark);
+}
+.login-card .subtitle{
+  margin:0 0 12px;
+  color:var(--muted);
+  font-size:14px;
+}
+.form{display:flex; flex-direction:column; gap:12px; margin-top:6px}
+.field{display:flex; flex-direction:column; text-align:left}
+.field span{font-size:13px; color:var(--muted); margin-bottom:6px}
+.field input{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid rgba(7,22,48,0.06);
+  font-size:15px;
+  outline:none;
+  transition:box-shadow .18s, border-color .12s;
+}
+.field input:focus{
+  border-color:var(--fg-blue);
+  box-shadow: 0 6px 18px rgba(11,97,164,0.08);
+}
+.actions{display:flex; gap:10px; justify-content:center; margin-top:6px}
+.hint{font-size:13px; color:var(--muted); margin-top:8px}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios • Sistema FGTAS</title>
+
+  <style>
+    /* ---------------------------------------------------------
+       RESET + BASE
+    --------------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background: #eef1f5;
+      color: #1f2a36;
+      min-height: 100vh;
+    }
+
+    /* ---------------------------------------------------------
+       HEADER
+    --------------------------------------------------------- */
+    header {
+      background: #005c9e;
+      color: white;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .logo-header {
+      height: 55px;
+    }
+
+    header h2 {
+      flex: 1;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+
+    .btn-voltar {
+      background: #ffffff20;
+      padding: 10px 16px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 7px;
+      border: 2px solid #ffffff60;
+      transition: .2s;
+    }
+
+    .btn-voltar:hover {
+      background: #ffffff35;
+    }
+
+    /* ---------------------------------------------------------
+       CONTAINER
+    --------------------------------------------------------- */
+    .form-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+      animation: fadeIn .3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------------------------------------------------------
+       FORM
+    --------------------------------------------------------- */
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #003a63;
+    }
+
+    select {
+      padding: 12px;
+      border-radius: 8px;
+      background: #fafbfc;
+      border: 2px solid #d7dce1;
+      transition: .2s;
+      font-size: 15px;
+    }
+
+    select:focus {
+      border-color: #007bce;
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 0 2px #007bce35;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      background: #007bce;
+      color: #fff;
+      font-size: 15px;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: #0063a7;
+    }
+
+    /* ---------------------------------------------------------
+        TABELA
+    --------------------------------------------------------- */
+    h3 {
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #003a63;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    table thead {
+      background: #005c9e;
+      color: #fff;
+    }
+
+    table th,
+    table td {
+      padding: 14px;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    table tbody tr:nth-child(even) {
+      background: #f5f7fa;
+    }
+
+    table tbody tr:hover {
+      background: #e9f2ff;
+    }
+
+    table td {
+      border-bottom: 1px solid #dde2e8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <img src="assets/img/logo_fgtas.png" alt="FGTAS" class="logo-header">
+    <h2>📊 Relatórios de Atendimento</h2>
+    <a href="menu.html" class="btn-voltar">⬅ Voltar</a>
+  </header>
+
+  <main class="form-container">
+
+    <form id="formRelatorio">
+
+      <!-- Forma -->
+      <div class="form-group">
+        <label>📞 Forma de Atendimento:</label>
+        <select id="filtroForma">
+          <option value="">Todas</option>
+          <option value="Presencial">Presencial</option>
+          <option value="Whatsapp">Whatsapp</option>
+          <option value="Ligação Telefônica">Ligação Telefônica</option>
+          <option value="Email">E-mail</option>
+          <option value="Redes Sociais">Redes Sociais</option>
+          <option value="Teams">Teams</option>
+        </select>
+      </div>
+
+      <!-- Público -->
+      <div class="form-group">
+        <label>👥 Público:</label>
+        <select id="filtroPublico">
+          <option value="">Todos</option>
+          <option value="Empregador">Empregador</option>
+          <option value="Trabalhador">Trabalhador</option>
+          <option value="Setor FGTAS">Setor FGTAS</option>
+        </select>
+      </div>
+
+      <!-- Tipo -->
+      <div class="form-group">
+        <label>📝 Tipo de Atendimento:</label>
+        <select id="filtroTipo">
+          <option value="">Todos</option>
+          <option value="Abertura de Vaga">Abertura de Vaga</option>
+          <option value="Intermediação">Intermediação</option>
+          <option value="Seguro-Desemprego">Seguro-Desemprego</option>
+          <option value="Cadastro no Sine">Cadastro no Sine</option>
+          <option value="Solicitação Interna">Solicitação Interna</option>
+          <option value="Transferência">Transferência</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn" onclick="filtrar()">🔍 Buscar</button>
+      <button type="button" class="btn" onclick="exportarCSV()">📤 Exportar CSV</button>
+
+    </form>
+
+    <h3>📃 Resultados:</h3>
+
+    <table id="tabela" class="tabela-relatorio">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Forma</th>
+          <th>Público</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabela">
+        <!-- Resultados aqui -->
+      </tbody>
+    </table>
+
+  </main>
+
+  <script src="assets/js/relatorios.js"></script>
+  <script src="assets/js/auth.js"></script>
+
+</body>
+
+</html>

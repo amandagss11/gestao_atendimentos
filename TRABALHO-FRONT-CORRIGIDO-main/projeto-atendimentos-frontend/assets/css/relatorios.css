@@ -1,0 +1,124 @@
+/* relatorios.css - Estilo da página de Relatórios (FGTAS) */
+/* Compatível com global.css / style.css - usa fallbacks */
+
+:root{
+  --fg-blue: var(--fg-blue, #0054a6);
+  --fg-blue-dark: var(--fg-blue-dark, #003f7d);
+  --fg-white: #ffffff;
+  --muted: #6b7280;
+  --accent-rs-green: #007934;
+  --card-radius: 12px;
+  --card-shadow: 0 8px 26px rgba(7,22,48,0.08);
+}
+
+/* Base */
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: linear-gradient(180deg,#f7fbfe 0%, #eef7ff 100%);
+  color: var(--fg-blue-dark);
+  margin: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 36px auto;
+  padding: 22px;
+}
+
+/* Card de filtros */
+.filter-card {
+  background: var(--fg-white);
+  border-radius: var(--card-radius);
+  padding: 18px;
+  box-shadow: var(--card-shadow);
+  border-left: 8px solid var(--fg-blue);
+}
+
+/* Título */
+h2 { color: var(--fg-blue); margin-bottom: 8px; }
+
+/* Grid filtros */
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+/* Input/Select */
+select, input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 9px;
+  border: 1px solid #dbe8fb;
+  background: #fbfeff;
+  font-size: 15px;
+}
+select:focus, input[type="date"]:focus {
+  border-color: var(--fg-blue);
+  box-shadow: 0 6px 18px rgba(11,97,164,0.08);
+}
+
+/* Ações */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  align-items: center;
+}
+.actions .btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: var(--fg-blue);
+  color: white;
+  box-shadow: 0 8px 20px rgba(11,97,164,0.12);
+}
+.actions .btn.alt {
+  background: transparent;
+  border: 1px solid rgba(11,97,164,0.12);
+  color: var(--fg-blue-dark);
+}
+
+/* Tabela */
+.tabela-relatorio {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: var(--fg-white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.tabela-relatorio thead tr {
+  background: linear-gradient(90deg, var(--fg-blue), var(--fg-blue-dark));
+  color: white;
+}
+.tabela-relatorio th, .tabela-relatorio td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #eef6ff;
+}
+.tabela-relatorio tbody tr:hover {
+  background: #f3f9ff;
+}
+
+/* Mensagens vazias */
+.empty {
+  padding: 18px;
+  text-align: center;
+  color: var(--muted);
+  background: #fbfdff;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+/* Responsividade */
+@media (max-width: 720px) {
+  .filter-grid { grid-template-columns: 1fr; }
+  .actions { flex-direction: column; }
+  .tabela-relatorio th, .tabela-relatorio td { font-size: 14px; }
+}

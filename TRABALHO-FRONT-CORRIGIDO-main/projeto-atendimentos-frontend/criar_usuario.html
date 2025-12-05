@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FGTAS • Criar Usuário</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #007adf, #004f8c);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      width: 430px;
+      background: #fff;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+      animation: fadeIn .4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 22px;
+      text-align: center;
+      color: #003f6f;
+      margin-bottom: 25px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 18px;
+    }
+
+    .field span {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #003f6f;
+    }
+
+    .field input {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 2px solid #dde2e7;
+      background: #f8fafc;
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    .field input:focus {
+      border-color: #007adf;
+      background: #fff;
+      box-shadow: 0 0 0 3px #007adf36;
+      outline: none;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    .btn.primary {
+      background: #00a859;
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: #008c4a;
+    }
+
+    .btn.back {
+      background: #e6eef5;
+      color: #003f6f;
+    }
+
+    .btn.back:hover {
+      background: #d4e1ec;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="card">
+    <h1>➕ Criar Usuário</h1>
+
+    <form id="createUserForm">
+      <label class="field">
+        <span>Nome completo</span>
+        <input type="text" id="nome" required>
+      </label>
+
+      <label class="field">
+        <span>Usuário</span>
+        <input type="text" id="usuario" required>
+      </label>
+
+      <label class="field">
+        <span>Senha</span>
+        <input type="password" id="senha" required>
+      </label>
+
+      <div class="actions">
+        <button type="button" class="btn back" onclick="window.location.href='index.html'">
+          ⬅ Voltar
+        </button>
+
+        <button type="submit" class="btn primary">
+          Criar Usuário ✔
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById("createUserForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Usuário criado com sucesso! (integre ao backend)");
+    });
+  </script>
+
+</body>
+
+</html>

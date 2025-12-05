@@ -3,12 +3,28 @@ import Profile from '../models/profile.js';
 
 export const createUser = async (req, res) => {
     try {
-        const { name, email, password, profile_id } = req.body;
-        
-        if (!name || !email || !password || !profile_id) {
-            return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
+        // Suporta tanto o formato novo (name,email,password,profile_id)
+        // quanto o formato legado do front-end (nome, login, perfil)
+        let { name, email, password, profile_id } = req.body;
+        const { nome, login, perfil } = req.body;
+
+        // Mapear campos legados para o formato esperado
+        if (!name && nome) name = nome;
+        if (!email && login) email = login;
+
+        // Se perfil (nome do perfil) for enviado, tente resolver o profile_id
+        if (!profile_id && perfil) {
+            const profileRecord = await Profile.findOne({ where: { name: perfil } });
+            if (profileRecord) profile_id = profileRecord.id_profile || profileRecord.id || null;
         }
-        
+
+        // Se nenhum password for enviado, atribua uma senha padrão temporária
+        if (!password) password = 'admin';
+
+        if (!name || !email || !password || !profile_id) {
+            return res.status(400).json({ message: 'Campos obrigatórios ausentes: name/email/password/profile_id.' });
+        }
+
         const newUser = await User.create({ name, email, password, profile_id });
         
         const userResponse = newUser.toJSON();

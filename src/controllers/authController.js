@@ -3,10 +3,13 @@ import Profile from '../models/profile.js';
 
 export const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        // Aceita tanto 'email' quanto 'login' como identificador
+        // Aceita tanto 'password' quanto 'senha'
+        const email = req.body.email || req.body.login;
+        const password = req.body.password || req.body.senha;
 
         if (!email || !password) {
-            return res.status(400).json({ message: 'E-mail e senha são obrigatórios.' });
+            return res.status(400).json({ message: 'E-mail/login e senha são obrigatórios.' });
         }
 
         const user = await User.findOne({
@@ -14,7 +17,7 @@ export const login = async (req, res) => {
             include: [{ 
                 model: Profile,
                 as: 'profile',
-                attributes: ['name', 'permissions'] 
+                attributes: ['id_profile', 'name', 'permissions'] 
             }]
         });
 
@@ -22,15 +25,25 @@ export const login = async (req, res) => {
             return res.status(401).json({ message: 'Credenciais inválidas.' });
         }
 
-        if (user.password !== password) {
+        // Compara senhas - se a senha no banco for texto plano, usa comparação direta
+        // Se estiver criptografada (bcrypt), precisaria usar bcrypt.compare()
+        const passwordMatch = user.password === password;
+
+        if (!passwordMatch) {
             return res.status(401).json({ message: 'Credenciais inválidas.' });
         }
 
         const userResponse = user.toJSON();
         delete userResponse.password;
 
+        // Retorna dados que o front-end espera
         return res.status(200).json({ 
             message: `Login bem-sucedido. Bem-vindo(a), ${userResponse.name}!`,
+            id: userResponse.id_user,
+            username: userResponse.name,
+            email: userResponse.email,
+            perfil: userResponse.profile?.name || 'Usuário',
+            token: `jwt_token_${userResponse.id_user}_${Date.now()}`, // Token simulado
             user: userResponse,
         });
 

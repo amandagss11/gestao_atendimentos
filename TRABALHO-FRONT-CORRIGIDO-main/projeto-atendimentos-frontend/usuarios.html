@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Usuários • Sistema FGTAS</title>
+
+    <style>
+        /* ============================
+           ESTILO GLOBAL
+        ============================ */
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        h2, h3 {
+            margin: 0;
+        }
+
+        /* ============================
+           HEADER
+        ============================ */
+        .header {
+            background: #0054a6;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .logo-header {
+            height: 60px;
+        }
+
+        .btn-voltar {
+            margin-left: auto;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 18px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-voltar:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
+        /* ============================
+           CONTAINER PRINCIPAL
+        ============================ */
+        .users-container {
+            width: 95%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+
+        /* ============================
+           BOTÕES
+        ============================ */
+        .btn {
+            background: #0054a6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: #003d7a;
+        }
+
+        .btn-danger {
+            background: #d93025;
+        }
+
+        .btn-danger:hover {
+            background: #b62318;
+        }
+
+        /* ============================
+           TABELA
+        ============================ */
+        .tabela-relatorio {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .tabela-relatorio th {
+            background: #0054a6;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .tabela-relatorio td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .tabela-relatorio tr:hover {
+            background: #f1f6ff;
+        }
+
+        .acao-btn {
+            background: #0054a6;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            margin-right: 6px;
+        }
+
+        .acao-btn:hover {
+            background: #003d7a;
+        }
+
+        .delete-btn {
+            background: #d93025;
+        }
+
+        .delete-btn:hover {
+            background: #b11910;
+        }
+
+        /* ============================
+           MODAL
+        ============================ */
+        .modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.55);
+            z-index: 1000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .modal-content {
+            width: 95%;
+            max-width: 450px;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            animation: fadeIn 0.3s ease;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #0054a6;
+            box-shadow: 0 0 0 2px rgba(0,84,166,0.15);
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header class="header">
+    <img src="img/logo_fgtas.png" class="logo-header">
+    <h2>👤 Gestão de Usuários</h2>
+    <a href="menu.html" class="btn-voltar">⬅ Voltar</a>
+</header>
+
+<main class="users-container">
+
+    <button class="btn" onclick="abrirModal()">➕ Adicionar Usuário</button>
+
+    <table class="tabela-relatorio">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Usuário</th>
+                <th>Perfil</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="listaUsuarios">
+            <!-- Preenchido pelo JS -->
+        </tbody>
+    </table>
+
+</main>
+
+<!-- ============================
+     MODAL
+============================ -->
+<div id="modalUsuario" class="modal hidden">
+    <div class="modal-content">
+        <h3 id="tituloModal">Adicionar Usuário</h3>
+
+        <form id="formUsuario">
+            <input type="hidden" id="idUsuario">
+
+            <div class="form-group">
+                <label>👤 Nome:</label>
+                <input type="text" id="nomeUsuario" placeholder="Nome completo">
+            </div>
+
+            <div class="form-group">
+                <label>🔑 Login:</label>
+                <input type="text" id="loginUsuario" placeholder="Usuário de acesso">
+            </div>
+
+            <div class="form-group">
+                <label>🛡 Perfil:</label>
+                <select id="perfilUsuario">
+                    <option value="Administrador">Administrador</option>
+                    <option value="Operador">Operador</option>
+                    <option value="Leitor">Leitor</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn" onclick="salvarUsuario()">💾 Salvar</button>
+            <button type="button" class="btn btn-danger" onclick="fecharModal()">❌ Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="assets/js/usuario.js"></script>
+
+</body>
+</html>

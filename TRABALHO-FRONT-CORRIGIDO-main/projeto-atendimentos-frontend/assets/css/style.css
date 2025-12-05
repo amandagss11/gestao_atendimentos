@@ -1,0 +1,326 @@
+/* ===============================
+   ESTILO GLOBAL — FGTAS
+   =============================== */
+
+:root {
+    --azul: #0054a6;
+    --azul-claro: #1d75d2;
+    --azul-escuro: #003f7d;
+    --branco: #ffffff;
+
+    /* Cores da bandeira do RS */
+    --verde-rs: #007934;
+    --vermelho-rs: #c00000;
+    --amarelo-rs: #ffcc00;
+
+    --cinza: #e9e9e9;
+    --cinza-escuro: #666;
+
+    --radius: 10px;
+    --sombra: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Remove padrão */
+body, h1, h2, h3, p, ul, li, input, select, button {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: #f5f8ff;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.header {
+    background: var(--azul);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+.logo-header {
+    width: 55px;
+}
+
+.header h2 {
+    flex: 1;
+    font-size: 24px;
+}
+
+.btn-voltar {
+    padding: 8px 15px;
+    background: var(--vermelho-rs);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background: #a50000;
+}
+
+/* ===============================
+   LOGIN
+   =============================== */
+
+.login-container {
+    width: 350px;
+    background: var(--branco);
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    animation: aparecer 0.8s ease;
+}
+
+.login-logo {
+    width: 130px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+   FORMULÁRIOS
+   =============================== */
+
+.form-container {
+    background: var(--branco);
+    width: 75%;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: var(--azul-escuro);
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cinza);
+    border-radius: var(--radius);
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: var(--azul);
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 84, 166, 0.4);
+}
+
+/* ===============================
+   BOTÕES
+   =============================== */
+
+.btn {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: var(--sombra);
+}
+
+.btn:hover {
+    background: var(--azul-claro);
+}
+
+.btn-danger {
+    background: var(--vermelho-rs) !important;
+}
+
+.btn-danger:hover {
+    background: #a50000 !important;
+}
+
+.btn-small {
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+/* ===============================
+   MENU
+   =============================== */
+
+.menu-container {
+    width: 80%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.menu-box {
+    background: var(--branco);
+    padding: 25px;
+    border-radius: var(--radius);
+    text-align: center;
+    color: var(--azul-escuro);
+    box-shadow: var(--sombra);
+    cursor: pointer;
+    transition: 0.3s;
+    border-top: 10px solid var(--azul);
+}
+
+.menu-box:hover {
+    transform: translateY(-5px);
+    background: #eef5ff;
+}
+
+/* ===============================
+   TABELAS
+   =============================== */
+
+.tabela-relatorio {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabela-relatorio th {
+    background: var(--azul);
+    color: white;
+    padding: 12px;
+}
+
+.tabela-relatorio td {
+    border-bottom: 1px solid var(--cinza);
+    padding: 10px;
+    text-align: center;
+}
+
+.tabela-relatorio tr:hover {
+    background: #eef4ff;
+}
+
+/* ===============================
+   LISTA DE CAMPOS
+   =============================== */
+
+.lista-campos {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.campo-item {
+    background: #f0f4ff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.campo-item .tipo {
+    background: var(--amarelo-rs);
+    padding: 3px 8px;
+    border-radius: var(--radius);
+    color: black;
+    margin-right: 10px;
+}
+
+/* ===============================
+   MODAL
+   =============================== */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-content {
+    background: var(--branco);
+    padding: 25px;
+    width: 380px;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.85); }
+    to   { transform: scale(1); }
+}
+
+/* ===============================
+   CARDS DO DASHBOARD
+   =============================== */
+
+.card {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    text-align: center;
+    border-left: 10px solid var(--verde-rs);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ===============================
+   RESPONSIVIDADE
+   =============================== */
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+    }
+
+    .login-container {
+        width: 85%;
+    }
+
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+}

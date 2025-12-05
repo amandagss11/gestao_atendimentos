@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FGTAS • Login</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #004f8c, #007adf);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #1a1a1a;
+    }
+
+    .bg-flag img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 190px;
+      opacity: 0.25;
+      user-select: none;
+    }
+
+    .login-card {
+      width: 380px;
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+      animation: fadeIn .5s ease-out;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .logo {
+      width: 130px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #003f6f;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #495764;
+      margin-bottom: 25px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .field span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #003f6f;
+      margin-bottom: 5px;
+    }
+
+    .field input {
+      border: 2px solid #dde2e7;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      background: #f8fafc;
+      transition: .2s;
+    }
+
+    .field input:focus {
+      border-color: #007adf;
+      background: white;
+      box-shadow: 0 0 0 3px #007adf36;
+      outline: none;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      transition: .2s;
+    }
+
+    .btn.primary {
+      background: #007adf;
+      color: white;
+    }
+
+    .btn.primary:hover {
+      background: #005fa9;
+    }
+
+    .btn.ghost {
+      background: #e8eef4;
+      color: #003f6f;
+    }
+
+    .btn.ghost:hover {
+      background: #d7e1ea;
+    }
+
+    /* botão criar usuário */
+    .btn-create {
+      margin-top: 10px;
+      background: #00b85c;
+      color: white;
+    }
+
+    .btn-create:hover {
+      background: #009548;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 10px;
+      color: white;
+      font-size: 13px;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-flag">
+    <img src="assets/img/bandeira-rs.png">
+  </div>
+
+  <section class="login-card">
+    <img src="assets/img/logo.png" class="logo">
+
+    <h1>📋 Gerenciador de Atendimentos - FGTAS</h1>
+    <p class="subtitle">Acesse seu painel</p>
+
+    <form id="loginForm">
+      <label class="field">
+        <span>Usuário</span>
+        <input type="text" id="username" placeholder="seu.usuario" required>
+      </label>
+
+      <label class="field">
+        <span>Senha</span>
+        <input type="password" id="password" placeholder="••••••" required>
+      </label>
+
+      <div class="actions">
+        <button class="btn primary" type="submit">Entrar 🔐</button>
+        <button type="button" class="btn ghost" id="demoBtn">Entrar como demo 👀</button>
+      </div>
+    </form>
+
+    <!-- BOTÃO NOVO -->
+    <button onclick="window.location.href='criar_usuario.html'" class="btn btn-create">
+      Criar Usuário ➕
+    </button>
+
+  </section>
+
+  <footer class="footer">FGTAS • Governado do Estado RS</footer>
+
+  <script type="module" src="assets/js/login.js"></script>
+
+</body>
+
+</html>

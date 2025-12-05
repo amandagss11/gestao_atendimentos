@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Atendimento • Sistema FGTAS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <img src="img/logo_fgtas.png" alt="FGTAS" class="logo-header">
+        <h2>📋 Registro de Atendimento</h2>
+        <a href="dashboard.html" class="btn-voltar">⬅ Voltar</a>
+    </header>
+
+    <main class="form-container">
+
+        <form id="formAtendimento">
+
+            <!-- 1. Forma de atendimento -->
+            <div class="form-group">
+                <label>📞 Forma de Atendimento:</label>
+                <select id="forma" required>
+                    <option value="">Selecione...</option>
+                    <option value="Presencial">Presencial</option>
+                    <option value="Whatsapp">Whatsapp</option>
+                    <option value="Ligação Telefônica">Ligação Telefônica</option>
+                    <option value="Email">E-mail</option>
+                    <option value="Redes Sociais">Redes Sociais</option>
+                    <option value="Teams">Teams</option>
+                </select>
+            </div>
+
+            <!-- 2. Público -->
+            <div class="form-group">
+                <label>👥 Público Atendido:</label>
+                <select id="publico" required onchange="mostrarCampos()">
+                    <option value="">Selecione...</option>
+                    <option value="Empregador">Empregador</option>
+                    <option value="Trabalhador">Trabalhador</option>
+                    <option value="Setor FGTAS">Setor da FGTAS</option>
+                </select>
+            </div>
+
+            <!-- Campos dinâmicos -->
+            <div id="camposGerados"></div>
+
+            <!-- 4. Tipo de atendimento -->
+            <div class="form-group">
+                <label>📝 Tipo de Atendimento:</label>
+                <select id="tipo" required>
+                    <option value="">Selecione...</option>
+                    <option class="empregador tipoE" value="Abertura de Vaga">Abertura de Vaga</option>
+                    <option class="empregador tipoE" value="Intermediação">Intermediação</option>
+
+                    <option class="trabalhador tipoT" value="Seguro-Desemprego">Seguro-Desemprego</option>
+                    <option class="trabalhador tipoT" value="Cadastro no Sine">Cadastro no Sine</option>
+
+                    <option class="setor tipoS" value="Solicitação Interna">Solicitação Interna</option>
+                    <option class="setor tipoS" value="Transferência de Chamado">Transferência</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">💾 Registrar Atendimento</button>
+        </form>
+
+        <p id="msg" class="msg-sucesso"></p>
+
+    </main>
+
+    <script src="assets/js/atendimento.js"></script>
+    <script src="assets/js/auth.js"></script>
+
+</body>
+</html>

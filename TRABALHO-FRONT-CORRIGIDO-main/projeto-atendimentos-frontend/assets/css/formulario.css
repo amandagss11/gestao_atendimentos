@@ -1,0 +1,96 @@
+.page-formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.flag-rs {
+  width: 82px;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  border-radius: 8px;
+  opacity: 0.96;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Topbar */
+.topbar {
+  width: 100%;
+  background: var(--fg-blue);
+  color: var(--fg-white);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* Conteúdo */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 18px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 8px;
+  color: var(--fg-blue-dark);
+  font-size: 26px;
+}
+
+.desc {
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+/* Formulário */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(11,97,164,0.18);
+  font-size: 15px;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--fg-blue);
+  box-shadow: 0 6px 16px rgba(11,97,164,0.15);
+}
+
+/* Campos dinâmicos */
+.dynamic-field {
+  margin-top: 10px;
+}
+.dynamic-field label {
+  font-weight: 600;
+}
